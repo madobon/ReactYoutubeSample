@@ -43,7 +43,7 @@ class App extends Component {
       // this.setState({videos: videos});
       this.setState({
         videos: videos,
-        selectedVideo: videos[0] // 最初の動画
+        selectedVideo: this.state.selectedVideo || videos[0] // 最初の動画は最初、その後は保持
       });
     });
   }
