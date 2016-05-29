@@ -59,6 +59,22 @@ class App extends Component {
     event.stopPropagation();
   }
 
+  deleteBookmarkSelect(event, selectedBookMark) {
+    const bookmarks = this.state.bookmarks;
+
+    // 選択されたものを除外
+    const filteredBookmarks = bookmarks.filter(function(bookmark) {
+      return bookmark !== selectedBookMark;
+    });
+
+    this.setState({bookmarks: filteredBookmarks});
+    event.stopPropagation();
+  }
+
+  videoSelect(selectedVideo) {
+    this.setState({selectedVideo});
+  }
+
   render() {
     // 300ms以上経過していれば、検索
     const videoSearch = _.debounce(term => {this.videoSearch(term)}, 300);
@@ -68,11 +84,12 @@ class App extends Component {
         <SearchBar onSearchTermChange={videoSearch}/>
         <VideoDetail video = {this.state.selectedVideo} />
         <VideoList
-          onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+          onVideoSelect = {this.videoSelect.bind(this)}
           onBookmarkSelect = {this.bookmarkSelect.bind(this)}
           videos = {this.state.videos}/>
         <BookMarkList
-          onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+          onVideoSelect = {this.videoSelect.bind(this)}
+          onDeleteBookmarkSelect = {this.deleteBookmarkSelect.bind(this)}
           bookmarks = {this.state.bookmarks} />
       </div>
     );

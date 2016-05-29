@@ -20,7 +20,7 @@ export default class BookmarkListItem extends Component {
             <div className="media-heading">
               {title}
             </div>
-            <button type="button" className="btn btn-default btn-sm">
+            <button type="button" className="btn btn-default btn-sm" onClick={event => this.props.onDeleteBookmarkSelect(event, video)}>
               <span className="glyphicon glyphicon-star" aria-hidden="true"></span> Delete
             </button>
           </div>

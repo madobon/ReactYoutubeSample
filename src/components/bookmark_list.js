@@ -11,6 +11,7 @@ export default class BookMarkList extends Component {
       return (
         <BookMarkListItem
           onVideoSelect={this.props.onVideoSelect}
+          onDeleteBookmarkSelect={this.props.onDeleteBookmarkSelect}
           key={video.etag}
           video={video} />
       )
