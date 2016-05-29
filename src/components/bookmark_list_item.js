@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-export default class VideoListItem extends Component {
+export default class BookmarkListItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -20,8 +20,8 @@ export default class VideoListItem extends Component {
             <div className="media-heading">
               {title}
             </div>
-            <button type="button" className="btn btn-default btn-sm" onClick={event => this.props.onBookmarkSelect(event, video)}>
-              <span className="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+            <button type="button" className="btn btn-default btn-sm">
+              <span className="glyphicon glyphicon-star" aria-hidden="true"></span> Delete
             </button>
           </div>
         </div>

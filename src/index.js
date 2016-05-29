@@ -12,6 +12,7 @@ import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
 import VideoDetail from './components/video_detail';
+import BookMarkList from './components/bookmark_list';
 
 const API_KEY = 'AIzaSyBpfqQ85OyrVMfv9_8xriYKOdpeNcCozvo';
 
@@ -32,7 +33,9 @@ class App extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      bookmarks: [],
+      selectedBookMark: null
     };
 
     this.videoSearch('作業用BGM');
@@ -48,6 +51,14 @@ class App extends Component {
     });
   }
 
+  bookmarkSelect(event, selectedBookMark) {
+    const bookmarks = this.state.bookmarks;
+    bookmarks.push(selectedBookMark);
+    this.setState({selectedBookMark, bookmarks});
+
+    event.stopPropagation();
+  }
+
   render() {
     // 300ms以上経過していれば、検索
     const videoSearch = _.debounce(term => {this.videoSearch(term)}, 300);
@@ -58,7 +69,11 @@ class App extends Component {
         <VideoDetail video = {this.state.selectedVideo} />
         <VideoList
           onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
-          videos = {this.state.videos} />
+          onBookmarkSelect = {this.bookmarkSelect.bind(this)}
+          videos = {this.state.videos}/>
+        <BookMarkList
+          onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+          bookmarks = {this.state.bookmarks} />
       </div>
     );
   }

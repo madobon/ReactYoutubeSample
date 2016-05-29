@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 // };
 
 // ES2015クラスベース
-class SearchBar extends Component {
+export default class SearchBar extends Component {
 
   // コンストラクタ
   constructor(props) {
@@ -23,12 +23,12 @@ class SearchBar extends Component {
     return (
       // <input onChange={this.onInputChange} />
       // <input onChange={event => console.log(event.target.value)} />
-      <div className = "search-bar">
+      <div className="search-bar">
         <p>Youtube Search</p>
         <input
-          value = {this.state.term}
-          placeholder = "search some words"
-          onChange = {event => this.onInputChange(event.target.value)} />
+          value={this.state.term}
+          placeholder="search some words"
+          onChange={event => this.onInputChange(event.target.value)} />
       </div>
     );
   }
@@ -41,4 +41,4 @@ class SearchBar extends Component {
 }
 
 // 外部参照できるようにexportする
-export default SearchBar;
+// export default SearchBar;
